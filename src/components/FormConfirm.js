@@ -14,7 +14,8 @@ const styles = {
   },
   button: {
     padding: '10px',
-    width: '100px'
+    width: '100px',
+    margin: '0 20px'
   }
 }
 

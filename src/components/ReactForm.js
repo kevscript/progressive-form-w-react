@@ -15,6 +15,7 @@ class ReactForm extends React.Component {
       mail: '',
       age: '',
       height: '',
+      showMessage: false
     }
   }
 
@@ -44,6 +45,7 @@ class ReactForm extends React.Component {
       mail: '',
       age: 0,
       height: 0,
+      showMessage: false
     })
   }
 
@@ -58,13 +60,13 @@ class ReactForm extends React.Component {
       ) {
         this.handleNext()
       } else {
-        alert('some fields are not valid or empty')
+        this.setState({showMessage: true})
       }
   }
 
   render() {
 
-    const { step, firstname, lastname, mail, age, height } = this.state
+    const { step, firstname, lastname, mail, age, height, showMessage } = this.state
     const values = { firstname, lastname, mail, age, height }
 
     switch(step) {
@@ -86,6 +88,7 @@ class ReactForm extends React.Component {
             checkValidity={this.checkValidity}
             handlePrev={this.handlePrev}
             values={values}
+            showMessage={showMessage}
           />
         )
 

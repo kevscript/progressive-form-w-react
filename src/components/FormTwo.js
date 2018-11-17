@@ -16,11 +16,15 @@ const styles = {
   },
   button: {
     padding: '10px',
-    width: '100px'
+    width: '100px',
+    margin: '0 20px'
+  },
+  h3: {
+    color: 'red'
   }
 }
 
-export default function FormTwo({ handleChange, handleNext, checkValidity, handlePrev, values }) {
+export default function FormTwo({ handleChange, checkValidity, handlePrev, values, showMessage }) {
   return (
     <div style={styles.div}>
       <h1>Form Two</h1>
@@ -44,6 +48,7 @@ export default function FormTwo({ handleChange, handleNext, checkValidity, handl
         <button onClick={handlePrev} style={styles.button}>Prev</button>
         <button onClick={checkValidity} style={styles.button}>Next</button>
       </div>
+      <h3 style={styles.h3}>{showMessage ? "Some fields are not valid or empty." : ""}</h3>
     </div>
   )
 }
