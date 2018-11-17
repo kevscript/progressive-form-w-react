@@ -18,7 +18,7 @@ const styles = {
   }
 }
 
-export default function FormConfirm({ handleNext, handlePrev, values}) {
+export default function FormConfirm({ checkValidity, handlePrev, values}) {
   return (
     <div style={styles.div}>
       <h1>Form Confirm</h1>
@@ -31,7 +31,7 @@ export default function FormConfirm({ handleNext, handlePrev, values}) {
       </ul>
       <div>
         <button onClick={handlePrev} style={styles.button}>Change</button>
-        <button onClick={handleNext} style={styles.button}>Confirm</button>
+        <button onClick={checkValidity} style={styles.button}>Confirm</button>
       </div>
     </div>
   )

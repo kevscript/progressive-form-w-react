@@ -20,12 +20,12 @@ const styles = {
   }
 }
 
-export default function FormTwo({ handleChange, handleNext, handlePrev, values }) {
+export default function FormTwo({ handleChange, handleNext, checkValidity, handlePrev, values }) {
   return (
     <div style={styles.div}>
       <h1>Form Two</h1>
       <input 
-        type="text" 
+        type="number" 
         placeholder="your age" 
         style={styles.input}
         value={values.age}
@@ -33,7 +33,7 @@ export default function FormTwo({ handleChange, handleNext, handlePrev, values }
         onChange={handleChange}
       />
       <input 
-        type="text" 
+        type="number" 
         placeholder="your height in cm" 
         style={styles.input}
         value={values.height}
@@ -42,7 +42,7 @@ export default function FormTwo({ handleChange, handleNext, handlePrev, values }
       />
       <div>
         <button onClick={handlePrev} style={styles.button}>Prev</button>
-        <button onClick={handleNext} style={styles.button}>Next</button>
+        <button onClick={checkValidity} style={styles.button}>Next</button>
       </div>
     </div>
   )

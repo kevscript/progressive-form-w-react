@@ -14,13 +14,13 @@ class ReactForm extends React.Component {
       lastname: '',
       mail: '',
       age: '',
-      height: ''
+      height: '',
     }
   }
 
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.type === "number" ? parseInt(e.target.value) || '' : e.target.value
     })
   } 
 
@@ -42,9 +42,24 @@ class ReactForm extends React.Component {
       firstname: '',
       lastname: '',
       mail: '',
-      age: '',
-      height: ''
+      age: 0,
+      height: 0,
     })
+  }
+
+  checkValidity = () => {
+    const { firstname, lastname, mail, age, height } = this.state
+    if (
+      typeof firstname === "string" && firstname !== "" && isNaN(parseInt(firstname)) === true
+      && typeof lastname === "string" && lastname !== "" && isNaN(parseInt(lastname)) === true
+      && typeof mail === "string" && mail !== "" && isNaN(parseInt(mail)) === true
+      && typeof age === "number" && age !== "" && age !== 0
+      && typeof height === "number" && height !== "" && height !== 0
+      ) {
+        this.handleNext()
+      } else {
+        alert('some fields are not valid or empty')
+      }
   }
 
   render() {
@@ -68,6 +83,7 @@ class ReactForm extends React.Component {
           <FormTwo 
             handleChange={this.handleChange}
             handleNext={this.handleNext}
+            checkValidity={this.checkValidity}
             handlePrev={this.handlePrev}
             values={values}
           />
@@ -77,7 +93,7 @@ class ReactForm extends React.Component {
         return (
           <FormConfirm 
             handleChange={this.handleChange}
-            handleNext={this.handleNext}
+            checkValidity={this.checkValidity}
             handlePrev={this.handlePrev}
             values={values}
           />
@@ -87,6 +103,15 @@ class ReactForm extends React.Component {
         return (
           <FormWin 
             handleReset={this.handleReset}
+          />
+        )
+
+      default:
+        return (
+          <FormOne 
+            handleChange={this.handleChange}
+            handleNext={this.handleNext}
+            values={values}
           />
         )
     }
